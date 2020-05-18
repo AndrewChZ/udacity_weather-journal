@@ -1,20 +1,29 @@
 <html>
     <head>
         <title>All About Nasi Lemak</title>
-        <link rel="stylesheet" type="text/css" href="style/main.css">
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
     </head>
     <body>
         <header>
-            Daily Journal
+            <div class="subtitle">Daily Journal</div>
         </header>
         <h1>Hello Andrew,</h1>
-        <h2>How are you feelings today?</h2>
-        
-        <h2>Any thoughts to add?</h2>
-
-        <h2>Let is fetch your weather</h2>
-        <button>Submit my entry!</button>
+        <form>
+            <label >How are you feeling today?</label>
+            <div class="emotionSelection">
+                <button>X</button>
+                <button>X</button>
+                <button>X</button>
+                <button>X</button>
+                <button>X</button>
+            </div>
+            <label for="thoughts">Any thoughts to add?</label>
+            <input type="text" id="thoughts" name="thoughts">
+            <label for="zipcode">Let us fetch your weather</label>
+            <input type="text" id="zipcode" name="zipcode"><br>
+            <input type="submit" value="submit">
+        </form>
         <nav>
             <button>Add An Entry</button>
             <button>View Journal</button>
