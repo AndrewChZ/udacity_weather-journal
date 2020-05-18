@@ -1,0 +1,334 @@
+* {
+    box-sizing: border-box;
+    /* scroll-behavior: smooth; */
+    /* background-color: black; */
+}
+
+/************************************************/
+/*                 Nav Bar                     */
+/************************************************/
+
+nav {
+    /* display: none; */
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 50;
+    background-image: linear-gradient(to top, rgba(43, 45, 66, 1), rgba(43, 45, 66, 0.53)), url("../img/nasilemak_bw.png");
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 0.4s;
+}
+
+nav ul {
+    max-width: 755px;
+    display: flex;
+    list-style-type: none;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0;
+    margin: 0 auto 40 auto;
+}
+
+nav ul li {
+    margin: 0 16;
+}
+
+nav h4 {
+    margin: 40 0 16 0;
+}
+
+.focused a {
+    font-weight: 700;
+    color: #EDF2F4;
+}
+
+/************************************************/
+/*                 Headings                     */
+/************************************************/
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 88px;
+    line-height: 72px;
+    color: #EDF2F4;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 40px;
+    color: #EF233C;
+}
+
+h3 {
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    font-size: 24px;
+    color: #EDF2F4;
+}
+
+h4 {
+    font-weight: 400;
+    color: #EDF2F4;
+    font-size: 24px;
+}
+
+/************************************************/
+/*          Other HTML semantics                */
+/************************************************/
+
+body,
+a {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #8D99AE;
+    line-height: 24px;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+/************************************************/
+/*           CSS for classes and IDs           */
+/************************************************/
+
+#header-image {
+    width: 100%;
+    height: 640px;
+    background-image: linear-gradient(to top, rgba(43, 45, 66, 1), rgba(43, 45, 66, 0)), url("../img/nasilemak.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.header-text {
+    position: absolute;
+    width: 755px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1;
+    bottom: 0px;
+}
+
+.content-grid {
+    margin: 0 auto;
+}
+
+.dish-name {
+    display: inline-block;
+}
+
+.dish-name h1 {
+    margin-bottom: 24px;
+}
+
+.dish-name-border {
+    width: 88%;
+    margin: 0 auto;
+    border-bottom: 1px solid white;
+}
+
+.dish-stats-group {
+    display: flex;
+    flex-direction: row;
+}
+
+.dish-stats {
+    margin: 0 24px;
+}
+
+.dish-stats h3 {
+    margin: 16 0 0 0px;
+}
+
+.dish-stats p {
+    margin: 8 0 24 0px;
+}
+
+.dish-stats:first-child {
+    margin: 0 48 0 0;
+}
+
+.header-text:last-child {
+    margin-bottom: 40px
+}
+
+/************************************************/
+/*             CSS for body content              */
+/************************************************/
+
+figure {
+    width: 50%;
+    margin: 0;
+}
+
+figure ul {
+    margin-top: 0;
+}
+
+figcaption {
+    font-weight: 700;
+}
+
+.content-section {
+    padding: 40 0;
+    width: 755px;
+    margin: auto;
+}
+
+.even-section {
+    background-color: #EDF2F4;
+}
+
+.review {
+    text-align: center;
+    /* display: flex; */
+}
+
+.review h2,
+#header-overview {
+    display: none;
+}
+
+.review div:last-child {
+    margin-left: 16px
+}
+
+.ingredients-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/************************************************/
+/*                    Buttons                    */
+/************************************************/
+
+.button_dont-like-recipe,
+.button_like-recipe,
+.button_save-recipe {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 8px;
+    padding: 12px;
+    height: 48px;
+    line-height: 0px;
+    color: #EDF2F4;
+}
+
+.button_dont-like-recipe,
+.button_save-recipe {
+    background-color: #EF233C;
+    margin: 0px;
+}
+
+.button_like-recipe {
+    background-color: #4CC4D4;
+    margin: 0px;
+}
+
+.button_save-recipe img {
+    margin: 0 4 0 0;
+}
+
+
+/************************************************/
+/*           Media Queries - Tablet            */
+/************************************************/
+
+@media only screen and (max-width: 834px) {
+    .content-section {
+        width: 549px;
+    }
+
+    .header-text {
+        width: 549px;
+    }
+}
+
+/************************************************/
+/*           Media Queries - Mobile            */
+/************************************************/
+
+@media only screen and (max-width: 720px) {
+    
+    .content-section {
+        width: 80%;
+    }
+
+    .header-text {
+        width: 80%;
+    }
+    
+/************** For dish stats  **************/
+
+    .dish-stats,
+    .dish-stats:first-child {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+    }
+
+    .dish-stats {
+        margin: 8 0;
+    }
+
+    .dish-stats:first-child {
+        margin: 16 0 8 0;
+    }
+
+    .dish-stats:last-child {
+        margin: 8 0 16 0;
+    }
+
+    .dish-stats h3 {
+        font-size: 16px;
+        margin: 0 16 0 0;
+        width: 30%;
+    }
+
+    .dish-stats p {
+        margin: 0;
+    }
+
+    .dish-stats-group {
+        flex-direction: column;
+    }
+
+    /************** For Nav bar  **************/
+
+    nav ul li:not(.focused):not(.next):not(.previous),
+    .hide {
+        display: none;
+    }
+
+    .previous {
+        margin-left: 0;
+    }
+
+    .next {
+        margin-right: 0;
+    }
+
+    nav h4 {
+        margin: 16 0 8 0;
+    }
+
+    nav ul {
+        margin: 0 0 16 0;
+        justify-content: space-around;
+    }
+}
