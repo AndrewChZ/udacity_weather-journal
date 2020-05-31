@@ -1,36 +1,107 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>All About Nasi Lemak</title>
+        <title>Daily Journal</title>
         <link rel="stylesheet" type="text/css" href="main.css">
-        <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Rubik&display=swap" rel="stylesheet">
     </head>
     <body>
         <header>
-            <div class="subtitle">Daily Journal</div>
-        </header>
-        <h1>Hello Andrew,</h1>
-        <form>
-            <label >How are you feeling today?</label>
-            <div class="emotionSelection">
-                <div class="emoticonButton">😃</div>
-                <div class="emoticonButton">😐</div>
-                <div class="emoticonButton">😩</div>
-                <div class="emoticonButton">😡</div>
-                <div class="emoticonButton">😱</div>
-                <button>😱</button>
+            <div class="header-logo-group">
+                <img src="img/logo.svg" class="header-logo">
             </div>
-            <label for="thoughts">Any thoughts to add?</label>
-            <input type="text" id="thoughts" name="thoughts">
-            <label for="zipcode">Let us fetch your weather</label>
-            <input type="text" id="zipcode" name="zipcode"><br>
-            <button>Submit</button>
-            <input type="submit" value="submit">
-        </form>
-        <nav>
-            <button>Add An Entry</button>
-            <button>View Journal</button>
-        </nav>
+            <nav>
+                <a href=""><div class="nav-btn selected">Add Entry</div></a>
+                <a href=""><div class="nav-btn">View Diary</div></a>
+            </nav>
+        </header>
+
+        <!------ 1. Add Entry Content Start  ------>
+        <div class="content-add-entry">
+            <div class="illustration-space">
+                <img src="img/top-illustration-01.svg">
+                <h1>Welcome back, Andrew</h1>
+            </div>
+            <form>
+                <label><h1>How are you feeling today?</h1></label>
+                <div class="emotionSelection">
+                    <button type="button" class="button-emoji-group">
+                        <div class="button-emoji">😃</div>
+                        Happy!
+                    </button>
+                    <button type="button" class="button-selected button-emoji-group">
+                        <div class="button-emoji">😐</div>
+                        Meh
+                    </button>
+                    <button type="button" class="button-emoji-group">
+                        <div class="button-emoji">😩</div>
+                        Sigh
+                    </button>
+                    <button type="button" class="button-emoji-group">
+                        <div class="button-emoji">😡</div>
+                        #@&*!
+                    </button>
+                    <button type="button" class="button-emoji-group">
+                        <div class="button-emoji">😱</div>
+                        OMG
+                    </button>
+                </div>
+                <label for="thoughts"><h1>Any thoughts to add?</h1></label>
+                <input type="text" id="thoughts" name="thoughts" placeholder="I feel...">
+                <label for="zipcode"><h1>Let us fetch your weather</h1></label>
+                <input type="text" id="zipcode" name="zipcode" placeholder="My zipcode is..."><br>
+                <button type="button" class="button-form-submit">Submit</button>
+            </form>
+        </div>
+        <!------ // 1. Add Entry Content End  ------>
+
+
+
+
+        <!------ 2. View Diary Content Start  ------>
+        <!-- <div class="content-view-diary">
+            <div class="diary-entry">
+                <h1 class="diary-entry-header">Today</h1>
+                <p class="dairy-entry-weather">Rain, 36ºC</p>
+                <div class="entry-thoughts">
+                    <div class="entry-emoji">😐</div>
+                    <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam”</p>
+                </div>
+            </div>
+            <div class="diary-entry">
+                <h1 class="diary-entry-header">Today</h1>
+                <p class="dairy-entry-weather">Rain, 36ºC</p>
+                <div class="entry-thoughts">
+                    <div class="entry-emoji">😡</div>
+                    <p>“quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat”</p>
+                </div>
+            </div>
+            <div class="diary-entry">
+                <h1 class="diary-entry-header">Today</h1>
+                <p class="dairy-entry-weather">Rain, 36ºC</p>
+                <div class="entry-thoughts">
+                    <div class="entry-emoji">😃</div>
+                    <p>“Duis aute irure dolor in reprehenderit”</p>
+                </div>
+            </div>
+            <div class="diary-entry">
+                <h1 class="diary-entry-header">Today</h1>
+                <p class="dairy-entry-weather">Rain, 36ºC</p>
+                <div class="entry-thoughts">
+                    <div class="entry-emoji">😱</div>
+                    <p>“Excepteur sint occaecat cupidatat non”</p>
+                </div>
+            </div>
+        </div>
+        <div class="illustration-space">
+            <img src="img/bottom-illustration-01.svg">
+            <h1>Have something on your mind?</h1>
+            <button type="button" class="button-enourage-submission">Submit An Entry</button>
+        </div> -->
+        <!------ // 2. Add Entry Content End  ------>
+        
+        
         <script src="js/script.js"></script>
+        <div class="background-gradient"></div>
     </body>
 </html>
