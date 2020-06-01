@@ -50,6 +50,7 @@ function addEntry(req, res) {
     // console.log(req.body)
     newEntry = {
         feeling: req.body.feeling,
+        thoughts: req.body.thoughts,
         zipcode: req.body.zipcode        
     }
     

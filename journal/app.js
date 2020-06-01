@@ -8,7 +8,7 @@ let apiKey = '&appid=9f15e45060...';
 document.getElementById("button-form-submit").addEventListener('click', performAction);
 
 function performAction(e){
-    const feeling = `&#x${document.querySelector('.button-selected').firstElementChild.dataset.unicode}` //Was last working on this
+    const feeling = `${document.querySelector('.button-selected').firstElementChild.innerHTML}` //Was last working on this
     const thoughts = document.getElementById('thoughts').value;
     const zipcode = document.getElementById('zipcode').value;
     // getAnimal(baseURL, newAnimal, apiKey);
