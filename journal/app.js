@@ -3,17 +3,19 @@
 
 let baseURL = 'http://api.animalinfo.org/data/?animal='
 let apiKey = '&appid=9f15e45060...';
-const thoughts = document.getElementById('thoughts').value;
+// const thoughts = document.getElementById('thoughts').value;
 
 document.getElementById("button-form-submit").addEventListener('click', performAction);
 
 function performAction(e){
+    const feeling = `&#x${document.querySelector('.button-selected').firstElementChild.dataset.unicode}` //Was last working on this
+    const thoughts = document.getElementById('thoughts').value;
     const zipcode = document.getElementById('zipcode').value;
     // getAnimal(baseURL, newAnimal, apiKey);
     getData('/fakedata')
     .then(function(data) {
-        console.log(data);
-        postData('/addEntry', {feeling: thoughts, zipcode: zipcode})
+        // console.log(data);
+        postData('/addEntry', {feeling: feeling, thoughts: thoughts, zipcode: zipcode})
     .then(
         updateUI()
     )
@@ -38,7 +40,7 @@ const getData = async (baseURL, animal, key) => {
     const res = await fetch('/fakedata')
     try {
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         return data;
     } catch(error) {
         console.log("error", error)

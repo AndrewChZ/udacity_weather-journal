@@ -47,7 +47,7 @@ app.post('/addEntry', addEntry);
 
 // Adapted from "function addAnimal(req, res)"
 function addEntry(req, res) {
-    console.log(req.body)
+    // console.log(req.body)
     newEntry = {
         feeling: req.body.feeling,
         zipcode: req.body.zipcode        
