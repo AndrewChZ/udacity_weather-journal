@@ -35,6 +35,8 @@ const fakeData = {
     thoughts: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
   }
 
+
+// Used to send in the data that we have when user a clicks on the button
 // Adapted from "app.get('/fakeAnimalData', getFakeData)"
 app.get('/fakedata', getFakeData)
 
