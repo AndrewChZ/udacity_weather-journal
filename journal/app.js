@@ -26,10 +26,15 @@ const updateUI = async() => {
     const request = await fetch('/all');
     try {
       const allData = await request.json();
-      document.getElementById('animalName').innerHTML = allData[0].animal;
-      document.getElementById('animalFact').innerHTML = allData[0].facts;
+      console.log(allData);
+      console.log(allData[0].feeling);
+      console.log(allData[0].thoughts);
+      console.log(allData[0].zipcode);
+      document.getElementById('feelingReplace').innerHTML = allData[0].feeling;
+      document.getElementById('thoughtsReplace').innerHTML = allData[0].thoughts
+      document.getElementById('zipcodeReplace').innerHTML = allData[0].zipcode;
     } catch(error) {
-      console.log("error", error)
+      console.log("error")
     }
   }
 
@@ -65,6 +70,6 @@ const postData = async ( url = '', data = {})=>{
         console.log(newData);
         return newData;
       }catch(error) {
-      console.log("error", error);
+        console.log("error", error);
       }
   }

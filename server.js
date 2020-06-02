@@ -64,6 +64,10 @@ function addEntry(req, res) {
 // invokes when there is a get request to the homepage
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/all', function (req, res) {
-    // res.send('hello world2');
-    res.send('GET on /all received');
+    res.send(diaryData);
+})
+
+// invokes when there is a post request to the homepage
+app.post('/', function (req, res) {
+  res.send('POST received')
 })
