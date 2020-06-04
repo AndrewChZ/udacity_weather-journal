@@ -31,6 +31,7 @@ function performAction(e){
     const feeling = `${document.querySelector('.button-selected').firstElementChild.innerHTML}` //Was last working on this
     const thoughts = document.getElementById('thoughts').value;
     const zipcode = document.getElementById('zipcode').value;
+    let weather;
     // getAnimal(baseURL, newAnimal, apiKey);
     getData(baseURL, cityID, apiKey)
     .then(function(data) {
@@ -50,9 +51,11 @@ const updateUI = async() => {
       console.log(allData[0].feeling);
       console.log(allData[0].thoughts);
       console.log(allData[0].zipcode);
-      document.getElementById('feelingReplace').innerHTML = allData[0].feeling;
-      document.getElementById('thoughtsReplace').innerHTML = allData[0].thoughts
-      document.getElementById('zipcodeReplace').innerHTML = allData[0].zipcode;
+      // document.getElementById('feelingReplace').innerHTML = allData[0].feeling;
+      // document.getElementById('thoughtsReplace').innerHTML = allData[0].thoughts
+      // document.getElementById('zipcodeReplace').innerHTML = allData[0].zipcode;
+      // document.getElementById('weatherReplace').innerHTML = weather;
+      updateWeather(allData[0].feeling, allData[0].thoughts, weather);
     } catch(error) {
       console.log("error")
     }
@@ -73,6 +76,7 @@ const getData = async (baseURL, cityID, apiKey) => {
       console.log(`Temperature:`);
       console.log(`${data.main.temp}°C`);
       console.log(`---------------------------------------------`);
+      weather = `${data.weather[0].description}, ${data.main.temp}°C`;
       return data;
   } catch(error) {
       console.log("error", error)
@@ -125,9 +129,11 @@ const postData = async ( url = '', data = {})=>{
 function updateWeather(feeling, thoughts, weather) {
   let fragment = document.createDocumentFragment();
   fragment = `
+                <h3>Today</h3>
                 <p>Feeling: ${feeling} </p>
                 <p>Weather: ${weather}°C</p>
                 <p>Thoughts: ${thoughts}</p>
-                `
+                ${fragment}` 
   document.getElementById('resultsReplace').innerHTML = fragment;
+  return;
 }
