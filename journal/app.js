@@ -3,7 +3,7 @@
 
 let baseURL = 'http://api.openweathermap.org/data/2.5/weather?id='
 let cityID = '1880252';
-let apiKey = '&appid=57a2177ab4043fe02d0ceb4845a9b1dc';
+let apiKey = '&units=metric&appid=57a2177ab4043fe02d0ceb4845a9b1dc';
 // const thoughts = document.getElementById('thoughts').value;
 
 // My API key == 57a2177ab4043fe02d0ceb4845a9b1dc
@@ -66,7 +66,13 @@ const getData = async (baseURL, cityID, apiKey) => {
   // const res = await fetch('/fakedata')
   try {
       const data = await res.json();
+      console.log(`---------------------------------------------`);
+      console.log(`Raw weather data:`);
       console.log(data);
+      console.log(`---------------------------------------------`);
+      console.log(`Temperature:`);
+      console.log(`${data.main.temp}°C`);
+      console.log(`---------------------------------------------`);
       return data;
   } catch(error) {
       console.log("error", error)
@@ -91,22 +97,37 @@ const getData = async (baseURL, cityID, apiKey) => {
 // }
 
 const postData = async ( url = '', data = {})=>{
-    console.log(data);
-      const response = await fetch(url, {
-      method: 'POST', 
-      credentials: 'same-origin',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-     // Body data type must match "Content-Type" header        
-      body: JSON.stringify(data), 
-    });
-  
-      try {
-        const newData = await response.json();
-        console.log(newData);
-        return newData;
-      }catch(error) {
-        console.log("error", error);
-      }
-  }
+  console.log(data);
+    const response = await fetch(url, {
+    method: 'POST', 
+    credentials: 'same-origin',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    // Body data type must match "Content-Type" header        
+    body: JSON.stringify(data), 
+  });
+
+    try {
+      const newData = await response.json();
+      console.log(newData);
+      return newData;
+    }catch(error) {
+      console.log("error", error);
+    }
+}
+
+
+// Adding HTML Fragment code
+
+
+
+function updateWeather(feeling, thoughts, weather) {
+  let fragment = document.createDocumentFragment();
+  fragment = `
+                <p>Feeling: ${feeling} </p>
+                <p>Weather: ${weather}°C</p>
+                <p>Thoughts: ${thoughts}</p>
+                `
+  document.getElementById('resultsReplace').innerHTML = fragment;
+}
