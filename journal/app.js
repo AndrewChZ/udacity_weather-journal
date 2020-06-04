@@ -1,9 +1,29 @@
 // addAnimal == addEntry
 // getAnimal == getData
 
-let baseURL = 'http://api.animalinfo.org/data/?animal='
-let apiKey = '&appid=9f15e45060...';
+let baseURL = 'http://api.openweathermap.org/data/2.5/weather?id='
+let cityID = '1880252';
+let apiKey = '&appid=57a2177ab4043fe02d0ceb4845a9b1dc';
 // const thoughts = document.getElementById('thoughts').value;
+
+// My API key == 57a2177ab4043fe02d0ceb4845a9b1dc
+// API code exmaple
+
+// Trying to get my own address for Singapore
+// http://api.openweathermap.org/data/2.5/weather?zip=752501,sgp&appid=57a2177ab4043fe02d0ceb4845a9b1dc
+// ❌ does not work
+
+// Trying to use the example on OpenWeather website
+// http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=57a2177ab4043fe02d0ceb4845a9b1dc
+// ✅ Works
+
+// Search via ZIP code, for US
+// http://api.openweathermap.org/data/2.5/weather?zip=99501,us&appid=57a2177ab4043fe02d0ceb4845a9b1dc
+// ❌ does not work
+
+// Search via City code, for SG
+// http://api.openweathermap.org/data/2.5/weather?id=1880252&appid=57a2177ab4043fe02d0ceb4845a9b1dc
+// ✅ Works
 
 document.getElementById("button-form-submit").addEventListener('click', performAction);
 
@@ -12,7 +32,7 @@ function performAction(e){
     const thoughts = document.getElementById('thoughts').value;
     const zipcode = document.getElementById('zipcode').value;
     // getAnimal(baseURL, newAnimal, apiKey);
-    getData('/fakedata')
+    getData(baseURL, cityID, apiKey)
     .then(function(data) {
         // console.log(data);
         postData('/addEntry', {feeling: feeling, thoughts: thoughts, zipcode: zipcode})
@@ -38,20 +58,37 @@ const updateUI = async() => {
     }
   }
 
-const getData = async (baseURL, animal, key) => {
-    // 1. This is the actual code to run if we want to simulate how actual server data is like
-    // const res = await fetch(baseURL+animal+key)
-    // 2. As we are not using a real API, we are simulating 
-    const res = await fetch('/fakedata')
-    try {
-        const data = await res.json();
-        // console.log(data);
-        return data;
-    } catch(error) {
-        console.log("error", error)
-        // handle the error
-    }
+// Attempt to use API
+const getData = async (baseURL, cityID, apiKey) => {
+  // 1. This is the actual code to run if we want to simulate how actual server data is like
+  const res = await fetch(baseURL+cityID+apiKey)
+  // 2. As we are not using a real API, we are simulating 
+  // const res = await fetch('/fakedata')
+  try {
+      const data = await res.json();
+      console.log(data);
+      return data;
+  } catch(error) {
+      console.log("error", error)
+      // handle the error
+  }
 }
+
+// // Original code chunk that uses fake data
+// const getData = async (baseURL, animal, key) => {
+//     // 1. This is the actual code to run if we want to simulate how actual server data is like
+//     // const res = await fetch(baseURL+animal+key)
+//     // 2. As we are not using a real API, we are simulating 
+//     const res = await fetch('/fakedata')
+//     try {
+//         const data = await res.json();
+//         // console.log(data);
+//         return data;
+//     } catch(error) {
+//         console.log("error", error)
+//         // handle the error
+//     }
+// }
 
 const postData = async ( url = '', data = {})=>{
     console.log(data);
