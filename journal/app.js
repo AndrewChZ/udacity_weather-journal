@@ -91,10 +91,14 @@ function updateWeather(x, feeling, thoughts, weather) {
   let entry = "";
   for (i=0; i<x.length; i++){
     let newEntry = `
-                  <h3>Today</h3>
-                  <p>Feeling: ${x[i].feeling} </p>
-                  <p>Weather: ${weather}</p>
-                  <p>Thoughts: ${x[i].thoughts}</p>
+                  <div class="diary-entry">
+                    <h1 class="diary-entry-header">Today</h1>
+                    <p class="dairy-entry-weather">${weather}</p>
+                    <div class="entry-thoughts">
+                      <div class="entry-emoji">${x[i].feeling}</div>
+                      <p>“${x[i].thoughts}”</p>
+                    </div>
+                  </div>
                   `
     entry = newEntry + entry;
   }
@@ -102,3 +106,19 @@ function updateWeather(x, feeling, thoughts, weather) {
   document.getElementById('resultsReplace').innerHTML = fragment;
   return;
 }
+
+{/* <div class="diary-entry">
+    <h1 class="diary-entry-header">Today</h1>
+    <p class="dairy-entry-weather">Rain, 36ºC</p>
+    <div class="entry-thoughts">
+        <div class="entry-emoji">😡</div>
+        <p>“quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat”</p>
+    </div>
+</div>
+
+let newEntry = `
+                  <h3>Today</h3>
+                  <p>Feeling: ${x[i].feeling} </p>
+                  <p>Weather: ${weather}</p>
+                  <p>Thoughts: ${x[i].thoughts}</p>
+                  ` */}
