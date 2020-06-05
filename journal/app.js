@@ -12,20 +12,24 @@ let apiKey = '&units=metric&appid=57a2177ab4043fe02d0ceb4845a9b1dc';
 document.getElementById("button-form-submit").addEventListener('click', performAction);
 
 function performAction(e){
-    const feeling = `${document.querySelector('.button-selected').firstElementChild.innerHTML}` //Was last working on this
+    const feeling = document.querySelector('.button-selected').firstElementChild.innerHTML
     const thoughts = document.getElementById('thoughts').value;
     const zipcode = document.getElementById('zipcode').value;
     let weather;
     let entry;
-    // getAnimal(baseURL, newAnimal, apiKey);
-    getData(baseURL, cityID, apiKey)
-    .then(function(data) {
-        // console.log(data);
-        postData('/addEntry', {feeling: feeling, thoughts: thoughts, zipcode: zipcode})
-    .then(
-        updateUI()
-    )
-    })
+    if (document.getElementById('thoughts').value.length > 0) {
+      getData(baseURL, cityID, apiKey)
+      .then(function(data) {
+          postData('/addEntry', {feeling: feeling, thoughts: thoughts, zipcode: zipcode})
+      .then(
+          updateUI()
+      )
+      })
+    } else if(document.getElementsByClassName("thoughts-warning").length == 1) {
+      return;
+    } else {
+      document.getElementById("thoughts").insertAdjacentHTML('afterend', '<p class="thoughts-warning">Please fill in your thoughts!</p>');
+    }
 }
 
 const updateUI = async() => {
@@ -37,11 +41,12 @@ const updateUI = async() => {
       console.log(allData[0].feeling);
       console.log(allData[0].thoughts);
       console.log(allData[0].zipcode);
+      toggleSelectedMenu();
       updateWeather(allData, allData[0].feeling, allData[0].thoughts, weather);
     } catch(error) {
       console.log("error")
     }
-  }
+}
 
 // Attempt to use API
 const getData = async (baseURL, cityID, apiKey) => {
@@ -131,4 +136,9 @@ function feelingsClicked(evt) {
     }
     evt.target.parentNode.classList.toggle("button-selected");
   }
+}
+
+function toggleSelectedMenu() {
+  document.querySelectorAll(".nav-btn")[0].classList.toggle("selected");
+  document.querySelectorAll(".nav-btn")[1].classList.toggle("selected");
 }
