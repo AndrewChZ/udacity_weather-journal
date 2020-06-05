@@ -107,18 +107,28 @@ function updateWeather(x, feeling, thoughts, weather) {
   return;
 }
 
-{/* <div class="diary-entry">
-    <h1 class="diary-entry-header">Today</h1>
-    <p class="dairy-entry-weather">Rain, 36ºC</p>
-    <div class="entry-thoughts">
-        <div class="entry-emoji">😡</div>
-        <p>“quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat”</p>
-    </div>
-</div>
+// Makes the feeling emojis clickable
+let emojiButtons = document.getElementsByClassName("button-emoji-group");
 
-let newEntry = `
-                  <h3>Today</h3>
-                  <p>Feeling: ${x[i].feeling} </p>
-                  <p>Weather: ${weather}</p>
-                  <p>Thoughts: ${x[i].thoughts}</p>
-                  ` */}
+for (let i = 0; i < emojiButtons.length ; i++) {
+  emojiButtons[i].addEventListener('click', feelingsClicked);
+}
+
+
+
+function feelingsClicked(evt) {
+  // console.log(`You've just clicked ${evt.target.classList}`);
+  // console.log(`The parenst clicked ${evt.target.textContent}`);
+  // console.log(`You've jut node's class list is; ${evt.target.parentNode.classList}`);
+  if (evt.target.classList.contains("button-emoji-group")) {
+    if (document.getElementsByClassName("button-selected").length == 1) {
+      document.querySelector(".button-selected").classList.toggle("button-selected");
+    }
+    evt.target.classList.toggle("button-selected");
+  } else {
+    if (document.getElementsByClassName("button-selected").length == 1) {
+      document.querySelector(".button-selected").classList.toggle("button-selected");
+    }
+    evt.target.parentNode.classList.toggle("button-selected");
+  }
+}
