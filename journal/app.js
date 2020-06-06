@@ -11,21 +11,58 @@ let apiKey = '&units=metric&appid=57a2177ab4043fe02d0ceb4845a9b1dc';
 
 document.getElementById("button-form-submit").addEventListener('click', performAction);
 
-function performAction(e){
-    const feeling = `${document.querySelector('.button-selected').firstElementChild.innerHTML}` //Was last working on this
-    const thoughts = document.getElementById('thoughts').value;
-    const zipcode = document.getElementById('zipcode').value;
-    let weather;
-    let entry;
-    // getAnimal(baseURL, newAnimal, apiKey);
-    getData(baseURL, cityID, apiKey)
-    .then(function(data) {
-        // console.log(data);
-        postData('/addEntry', {feeling: feeling, thoughts: thoughts, zipcode: zipcode})
-    .then(
-        updateUI()
-    )
-    })
+function performAction(e) {
+    if (document.getElementById('thoughts').value.length > 0 && document.getElementsByClassName("button-selected").length == 1 && document.getElementById('zipcode').value.length > 0) {
+      printValidationText();
+      const feeling = document.querySelector('.button-selected').firstElementChild.innerHTML
+      const thoughts = document.getElementById('thoughts').value;
+      const zipcode = document.getElementById('zipcode').value;
+      let weather;
+      let entry;
+      getData(baseURL, cityID, apiKey)
+      .then(function(data) {
+          postData('/addEntry', {feeling: feeling, thoughts: thoughts, zipcode: zipcode})
+      .then(
+          updateUI()
+      )
+      })
+    } else {
+      printValidationText();
+    }
+}
+
+function printValidationText() {
+  let isFeelingValid = (document.getElementsByClassName("button-selected").length == 1);
+  let isThoughtsValid = (document.getElementById('thoughts').value.length > 0);
+  let isZipcodeValid = (document.getElementById('zipcode').value.length > 0);
+  let isFeelingWarningAppeared = (document.getElementsByClassName('feeling-warning').length > 0);
+  let isThoughtsWarningAppeared = (document.getElementsByClassName('thoughts-warning').length > 0);
+  let isZipcodeWarningAppeared = (document.getElementsByClassName('zipcode-warning').length > 0);
+
+  if (isFeelingValid == false && isFeelingWarningAppeared == false) {
+    let validationText = document.c
+    document.getElementById("feeling-validation-text").innerHTML = '<p class="feeling-warning">Please select your feeling!</p>';
+  }
+
+  if (isFeelingValid == true && isFeelingWarningAppeared == true) {
+    document.getElementById("feeling-validation-text").removeChild(document.getElementsByClassName('feeling-warning')[0]);
+  }
+
+  if (isThoughtsValid == false && isThoughtsWarningAppeared == false) {
+    document.getElementById("thoughts-validation-text").innerHTML = `<p class="thoughts-warning">Please fill in your thoughts!</p>`;
+  }
+
+  if (isThoughtsValid == true && isThoughtsWarningAppeared == true) {
+    document.getElementById("thoughts-validation-text").removeChild(document.getElementsByClassName('thoughts-warning')[0]);
+  }
+
+  if (isZipcodeValid == false && isZipcodeWarningAppeared == false) {
+    document.getElementById("zipcode-validation-text").innerHTML = '<p class="zipcode-warning">Please fill in your zipcode!</p>';
+  }
+
+  if (isZipcodeValid == true && isZipcodeWarningAppeared == true) {
+    document.getElementById("zipcode-validation-text").removeChild(document.getElementsByClassName('zipcode-warning')[0]);
+  }
 }
 
 const updateUI = async() => {
@@ -37,11 +74,13 @@ const updateUI = async() => {
       console.log(allData[0].feeling);
       console.log(allData[0].thoughts);
       console.log(allData[0].zipcode);
+      toggleSelectedMenu();
+      updateContent();
       updateWeather(allData, allData[0].feeling, allData[0].thoughts, weather);
     } catch(error) {
       console.log("error")
     }
-  }
+}
 
 // Attempt to use API
 const getData = async (baseURL, cityID, apiKey) => {
@@ -114,7 +153,62 @@ for (let i = 0; i < emojiButtons.length ; i++) {
   emojiButtons[i].addEventListener('click', feelingsClicked);
 }
 
+function updateContent() {
+  let addEntryHTML = `  
+                    <div class="content-add-entry">
+                      <div class="illustration-space">
+                          <img src="img/top-illustration-01.svg">
+                          <h1>Welcome back, Andrew</h1>
+                      </div>
+                      <form>
+                          <label><h1>How are you feeling today?</h1></label>
+                          <div class="emotionSelection">
+                              <button type="button" class="button-emoji-group">
+                                  <div class="button-emoji">😃</div>
+                                  Happy!
+                              </button>
+                              <button type="button" class="button-emoji-group">
+                                  <div class="button-emoji">😐</div>
+                                  Meh
+                              </button>
+                              <button type="button" class="button-emoji-group">
+                                  <div class="button-emoji">😩</div>
+                                  Sigh
+                              </button>
+                              <button type="button" class="button-emoji-group">
+                                  <div class="button-emoji">😡</div>
+                                  #@&*!
+                              </button>
+                              <button type="button" class="button-emoji-group">
+                                  <div class="button-emoji">😱</div>
+                                  OMG
+                              </button>
+                          </div>
+                          <div id="feeling-validation-text"></div>
+                          <label for="thoughts"><h1>Any thoughts to add?</h1></label>
+                          <input type="text" id="thoughts" name="thoughts" placeholder="I feel...">
+                          <div id="thoughts-validation-text"></div>
+                          <label for="zipcode" id="zip"><h1>Let us fetch your weather</h1></label>
+                          <input type="text" id="zipcode" name="zipcode" placeholder="My zipcode is..."><br>
+                          <div id="zipcode-validation-text"></div>
+                          <button type="button" class="button-form-submit" id="button-form-submit">Submit</button>
+                      </form>
+                    </div>
+                    `;
+  let viewDiaryHTML = `
+                    <div class="content-view-diary">
+                      <div id="resultsReplace"></div>
+                      <div class="illustration-space">
+                          <img src="img/bottom-illustration-01.svg">
+                          <h1>Have something on your mind?</h1>
+                          <button type="button" class="button-enourage-submission">Submit An Entry</button>
+                      </div> 
+                    </div>
+                    `;
+  if (document.getElementsByClassName("nav-btn")[0].classList.length = 2) {
 
+  }
+}
 
 function feelingsClicked(evt) {
   // console.log(`You've just clicked ${evt.target.classList}`);
@@ -131,4 +225,9 @@ function feelingsClicked(evt) {
     }
     evt.target.parentNode.classList.toggle("button-selected");
   }
+}
+
+function toggleSelectedMenu() {
+  document.querySelectorAll(".nav-btn")[0].classList.toggle("selected");
+  document.querySelectorAll(".nav-btn")[1].classList.toggle("selected");
 }

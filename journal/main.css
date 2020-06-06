@@ -114,6 +114,12 @@ a  {
     margin: 0 0.125rem 0;
 }
 
+.feeling-warning,
+.thoughts-warning,
+.zipcode-warning {
+    color: #E81D1D;
+}
+
 /************************************************/
 /*              Form Styling                 */
 /************************************************/
