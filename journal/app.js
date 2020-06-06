@@ -11,6 +11,10 @@ let apiKey = '&units=metric&appid=57a2177ab4043fe02d0ceb4845a9b1dc';
 
 document.getElementById("button-form-submit").addEventListener('click', performAction);
 
+// document.getElementsByClassName("nav-btn")[0].addEventListener('click', updateUI);
+
+
+
 function performAction(e) {
     if (document.getElementById('thoughts').value.length > 0 && document.getElementsByClassName("button-selected").length == 1 && document.getElementById('zipcode').value.length > 0) {
       printValidationText();
@@ -206,7 +210,9 @@ function updateContent() {
                     </div>
                     `;
   if (document.getElementsByClassName("nav-btn")[0].classList.length = 2) {
-
+    document.getElementById("content-div").innerHTML = viewDiaryHTML;
+  } else {
+    document.getElementById("content-div").innerHTML = addEntryHTML;
   }
 }
 
