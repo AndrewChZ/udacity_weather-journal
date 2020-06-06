@@ -114,7 +114,9 @@ a  {
     margin: 0 0.125rem 0;
 }
 
-.thoughts-warning {
+.feeling-warning,
+.thoughts-warning,
+.zipcode-warning {
     color: #E81D1D;
 }
 
