@@ -9,7 +9,7 @@ const apiKey = '&units=metric&appid=57a2177ab4043fe02d0ceb4845a9b1dc';
 // http://api.openweathermap.org/data/2.5/weather?id=1880252&appid=57a2177ab4043fe02d0ceb4845a9b1dc
 // ✅ Works
 
-document.getElementById("button-form-submit").addEventListener('click', performAction);
+document.getElementById("generate").addEventListener('click', performAction);
 
 // document.getElementsByClassName("nav-btn")[0].addEventListener('click', updateUI);
 
@@ -195,7 +195,7 @@ function updateContent() {
                           <label for="zipcode"><h1>Let us fetch your weather</h1></label>
                           <input type="text" id="zip" name="zip" placeholder="My zipcode is..."><br>
                           <div id="zipcode-validation-text"></div>
-                          <button type="button" class="button-form-submit" id="button-form-submit">Submit</button>
+                          <button type="button" class="generate" id="generate">Submit</button>
                       </form>
                     </div>
                     `;

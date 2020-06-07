@@ -199,7 +199,7 @@ button:focus {
     color: #5A5D67;
 }
 
-.button-form-submit {
+.generate {
     height: 2.5rem;
     background: #198BBC;
     color: #F7F9FB;
@@ -223,8 +223,8 @@ button:focus {
     /* top: 50%; */
 }
 
-.button-form-submit:active,
-.button-form-submit:focus { 
+.generate:active,
+.generate:focus { 
     background: #2FA1D2;
     color: #F7F9FB;
 }
