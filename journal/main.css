@@ -87,7 +87,7 @@ a  {
     margin-top: 0;
 }
 
-.entry-thoughts {
+.entry-feelings {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -114,8 +114,8 @@ a  {
     margin: 0 0.125rem 0;
 }
 
-.feeling-warning,
-.thoughts-warning,
+.emoji-warning,
+.feelings-warning,
 .zipcode-warning {
     color: #E81D1D;
 }
@@ -199,7 +199,7 @@ button:focus {
     color: #5A5D67;
 }
 
-.button-form-submit {
+.generate {
     height: 2.5rem;
     background: #198BBC;
     color: #F7F9FB;
@@ -223,8 +223,8 @@ button:focus {
     /* top: 50%; */
 }
 
-.button-form-submit:active,
-.button-form-submit:focus { 
+.generate:active,
+.generate:focus { 
     background: #2FA1D2;
     color: #F7F9FB;
 }

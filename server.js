@@ -7,12 +7,12 @@ const app = express();
 /* Dependencies */
 const bodyParser = require('body-parser')
 
-const diaryData = [
-  {date: "12 May", feeling: "😱" , thoughts: "Kopi-pua seo He still small boy one He still small boy one Buay.", zipcode: "827361", weather: "Thunderstorm, 26.3ºC"},
-  {date: "16 May", feeling: "😃" , thoughts: "Relak lah! Got problem ah? White Horse Shiok Char Kway Teow Don't fly my kite. Issit Taupok Pon then you know! Don't fly my kite 'Cher Issit Zhun Sam Seng Act Blur.", zipcode: "827361", weather: "Cloudy, 31.8ºC"},
-  {date: "22 May", feeling: "😡" , thoughts: "Don't play play. Relak lah!", zipcode: "827361", weather: "Broken clouds, 32.4ºC"},
-  {date: "26 May", feeling: "😱" , thoughts: "Eye-Power Catch No Ball Izzit? then you know! ", zipcode: "827361", weather: "Sunny, 34.4ºC"},
-  {date: "30 May", feeling: "😃" , thoughts: "Got problem ah? On lah! Gone-case Izzit? Don't fly my kite. My England not powderful!", zipcode: "827361", weather: "Rain, 29.7ºC"}
+const projectData = [
+  {date: "12 May", emoji: "😱" , feelings: "Kopi-pua seo He still small boy one He still small boy one Buay.", zipcode: "827361", weather: "Thunderstorm, 26.3ºC"},
+  {date: "16 May", emoji: "😃" , feelings: "Relak lah! Got problem ah? White Horse Shiok Char Kway Teow Don't fly my kite. Issit Taupok Pon then you know! Don't fly my kite 'Cher Issit Zhun Sam Seng Act Blur.", zipcode: "827361", weather: "Cloudy, 31.8ºC"},
+  {date: "22 May", emoji: "😡" , feelings: "Don't play play. Relak lah!", zipcode: "827361", weather: "Broken clouds, 32.4ºC"},
+  {date: "26 May", emoji: "😱" , feelings: "Eye-Power Catch No Ball Izzit? then you know! ", zipcode: "827361", weather: "Sunny, 34.4ºC"},
+  {date: "30 May", emoji: "😃" , feelings: "Got problem ah? On lah! Gone-case Izzit? Don't fly my kite. My England not powderful!", zipcode: "827361", weather: "Rain, 29.7ºC"}
 ]
 
 /* Middleware*/
@@ -38,7 +38,7 @@ app.use(express.static('journal'));
 // Dummy API Endpoint
 const fakeData = {
     weather: 'Rain, 36ºC',
-    thoughts: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+    feelings: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
   }
 
 
@@ -58,21 +58,21 @@ function addEntry(req, res) {
     // console.log(req.body)
     newEntry = {
         date: req.body.date,
-        feeling: req.body.feeling,
-        thoughts: req.body.thoughts,
+        emoji: req.body.emoji,
+        feelings: req.body.feelings,
         zipcode: req.body.zipcode,
         weather: req.body.weather       
     }
     
-    diaryData.push(newEntry)
-    res.send(diaryData)
-    console.log(diaryData)
+    projectData.push(newEntry)
+    res.send(projectData)
+    console.log(projectData)
 }
 
 // invokes when there is a get request to the homepage
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/all', function (req, res) {
-    res.send(diaryData);
+    res.send(projectData);
 })
 
 // invokes when there is a post request to the homepage
