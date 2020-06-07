@@ -7,7 +7,7 @@ const app = express();
 /* Dependencies */
 const bodyParser = require('body-parser')
 
-const diaryData = [
+const projectData = [
   {date: "12 May", feeling: "😱" , thoughts: "Kopi-pua seo He still small boy one He still small boy one Buay.", zipcode: "827361", weather: "Thunderstorm, 26.3ºC"},
   {date: "16 May", feeling: "😃" , thoughts: "Relak lah! Got problem ah? White Horse Shiok Char Kway Teow Don't fly my kite. Issit Taupok Pon then you know! Don't fly my kite 'Cher Issit Zhun Sam Seng Act Blur.", zipcode: "827361", weather: "Cloudy, 31.8ºC"},
   {date: "22 May", feeling: "😡" , thoughts: "Don't play play. Relak lah!", zipcode: "827361", weather: "Broken clouds, 32.4ºC"},
@@ -64,15 +64,15 @@ function addEntry(req, res) {
         weather: req.body.weather       
     }
     
-    diaryData.push(newEntry)
-    res.send(diaryData)
-    console.log(diaryData)
+    projectData.push(newEntry)
+    res.send(projectData)
+    console.log(projectData)
 }
 
 // invokes when there is a get request to the homepage
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/all', function (req, res) {
-    res.send(diaryData);
+    res.send(projectData);
 })
 
 // invokes when there is a post request to the homepage

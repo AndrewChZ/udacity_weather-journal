@@ -1,9 +1,9 @@
 // addAnimal == addEntry
 // getAnimal == getData
 
-let baseURL = 'http://api.openweathermap.org/data/2.5/weather?id='
-let cityID = '1880252';
-let apiKey = '&units=metric&appid=57a2177ab4043fe02d0ceb4845a9b1dc';
+const baseURL = 'http://api.openweathermap.org/data/2.5/weather?id='
+const cityID = '1880252';
+const apiKey = '&units=metric&appid=57a2177ab4043fe02d0ceb4845a9b1dc';
 
 // Search via City code, for SG
 // http://api.openweathermap.org/data/2.5/weather?id=1880252&appid=57a2177ab4043fe02d0ceb4845a9b1dc
@@ -16,11 +16,11 @@ document.getElementById("button-form-submit").addEventListener('click', performA
 
 
 function performAction(e) {
-    if (document.getElementById('thoughts').value.length > 0 && document.getElementsByClassName("button-selected").length == 1 && document.getElementById('zipcode').value.length > 0) {
+    if (document.getElementById('thoughts').value.length > 0 && document.getElementsByClassName("button-selected").length == 1 && document.getElementById('zip').value.length > 0) {
       printValidationText();
       const feeling = document.querySelector('.button-selected').firstElementChild.innerHTML
       const thoughts = document.getElementById('thoughts').value;
-      const zipcode = document.getElementById('zipcode').value;
+      const zipcode = document.getElementById('zip').value;
       const date = `Today`;
       let entry;
       getData(baseURL, cityID, apiKey)
@@ -38,7 +38,7 @@ function performAction(e) {
 function printValidationText() {
   let isFeelingValid = (document.getElementsByClassName("button-selected").length == 1);
   let isThoughtsValid = (document.getElementById('thoughts').value.length > 0);
-  let isZipcodeValid = (document.getElementById('zipcode').value.length > 0);
+  let isZipcodeValid = (document.getElementById('zip').value.length > 0);
   let isFeelingWarningAppeared = (document.getElementsByClassName('feeling-warning').length > 0);
   let isThoughtsWarningAppeared = (document.getElementsByClassName('thoughts-warning').length > 0);
   let isZipcodeWarningAppeared = (document.getElementsByClassName('zipcode-warning').length > 0);
@@ -192,8 +192,8 @@ function updateContent() {
                           <label for="thoughts"><h1>Any thoughts to add?</h1></label>
                           <input type="text" id="thoughts" name="thoughts" placeholder="I feel...">
                           <div id="thoughts-validation-text"></div>
-                          <label for="zipcode" id="zip"><h1>Let us fetch your weather</h1></label>
-                          <input type="text" id="zipcode" name="zipcode" placeholder="My zipcode is..."><br>
+                          <label for="zipcode"><h1>Let us fetch your weather</h1></label>
+                          <input type="text" id="zip" name="zip" placeholder="My zipcode is..."><br>
                           <div id="zipcode-validation-text"></div>
                           <button type="button" class="button-form-submit" id="button-form-submit">Submit</button>
                       </form>
