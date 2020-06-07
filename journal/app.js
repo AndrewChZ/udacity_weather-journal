@@ -21,11 +21,11 @@ function performAction(e) {
       const feeling = document.querySelector('.button-selected').firstElementChild.innerHTML
       const thoughts = document.getElementById('thoughts').value;
       const zipcode = document.getElementById('zipcode').value;
-      let weather;
+      const date = `Today`;
       let entry;
       getData(baseURL, cityID, apiKey)
       .then(function(data) {
-          postData('/addEntry', {feeling: feeling, thoughts: thoughts, zipcode: zipcode})
+          postData('/addEntry', {date: date, feeling: feeling, thoughts: thoughts, zipcode: zipcode, weather: `${data.weather[0].description.charAt(0).toUpperCase()}${data.weather[0].description.slice(1)}, ${data.main.temp.toFixed(1)}°C`})
       .then(
           updateUI()
       )
@@ -80,7 +80,7 @@ const updateUI = async() => {
       console.log(allData[0].zipcode);
       toggleSelectedMenu();
       updateContent();
-      updateWeather(allData, allData[0].feeling, allData[0].thoughts, weather);
+      updateWeather(allData);
     } catch(error) {
       console.log("error")
     }
@@ -129,14 +129,14 @@ const postData = async ( url = '', data = {})=>{
     }
 }
 
-function updateWeather(x, feeling, thoughts, weather) {
+function updateWeather(x) {
   let fragment = document.createDocumentFragment();
   let entry = "";
   for (i=0; i<x.length; i++){
     let newEntry = `
                   <div class="diary-entry">
-                    <h1 class="diary-entry-header">Today</h1>
-                    <p class="dairy-entry-weather">${weather}</p>
+                    <h1 class="diary-entry-header">${x[i].date}</h1>
+                    <p class="dairy-entry-weather">${x[i].weather}</p>
                     <div class="entry-thoughts">
                       <div class="entry-emoji">${x[i].feeling}</div>
                       <p>“${x[i].thoughts}”</p>
