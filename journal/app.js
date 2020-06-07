@@ -134,10 +134,10 @@ function updateWeather(x) {
   let entry = "";
   for (i=0; i<x.length; i++){
     let newEntry = `
-                  <div class="diary-entry">
-                    <h1 class="diary-entry-header">${x[i].date}</h1>
-                    <p class="dairy-entry-weather">${x[i].weather}</p>
-                    <div class="entry-feelings">
+                  <div class="diary-entry" id="entryHolder">
+                    <h1 class="diary-entry-header" id="date">${x[i].date}</h1>
+                    <p class="dairy-entry-weather" id="temp">${x[i].weather}</p>
+                    <div class="entry-feelings" id="content">
                       <div class="entry-emoji">${x[i].emoji}</div>
                       <p>“${x[i].feelings}”</p>
                     </div>
