@@ -7,7 +7,13 @@ const app = express();
 /* Dependencies */
 const bodyParser = require('body-parser')
 
-const diaryData = []
+const diaryData = [
+  {date: "12 May", feeling: "😱" , thoughts: "Kopi-pua seo He still small boy one He still small boy one Buay.", zipcode: "827361", weather: "Thunderstorm, 26.3ºC"},
+  {date: "16 May", feeling: "😃" , thoughts: "Relak lah! Got problem ah? White Horse Shiok Char Kway Teow Don't fly my kite. Issit Taupok Pon then you know! Don't fly my kite 'Cher Issit Zhun Sam Seng Act Blur.", zipcode: "827361", weather: "Cloudy, 31.8ºC"},
+  {date: "22 May", feeling: "😡" , thoughts: "Don't play play. Relak lah!", zipcode: "827361", weather: "Broken clouds, 32.4ºC"},
+  {date: "26 May", feeling: "😱" , thoughts: "Eye-Power Catch No Ball Izzit? then you know! ", zipcode: "827361", weather: "Sunny, 34.4ºC"},
+  {date: "30 May", feeling: "😃" , thoughts: "Got problem ah? On lah! Gone-case Izzit? Don't fly my kite. My England not powderful!", zipcode: "827361", weather: "Rain, 29.7ºC"}
+]
 
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
@@ -51,9 +57,11 @@ app.post('/addEntry', addEntry);
 function addEntry(req, res) {
     // console.log(req.body)
     newEntry = {
+        date: req.body.date,
         feeling: req.body.feeling,
         thoughts: req.body.thoughts,
-        zipcode: req.body.zipcode        
+        zipcode: req.body.zipcode,
+        weather: req.body.weather       
     }
     
     diaryData.push(newEntry)
