@@ -87,7 +87,7 @@ a  {
     margin-top: 0;
 }
 
-.entry-thoughts {
+.entry-feelings {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -114,8 +114,8 @@ a  {
     margin: 0 0.125rem 0;
 }
 
-.feeling-warning,
-.thoughts-warning,
+.emoji-warning,
+.feelings-warning,
 .zipcode-warning {
     color: #E81D1D;
 }
