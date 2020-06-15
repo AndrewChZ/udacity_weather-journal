@@ -20,7 +20,7 @@ function performAction(e) {
       const emoji = document.querySelector('.button-selected').firstElementChild.innerHTML
       const feelings = document.getElementById('feelings').value;
       const zipcode = document.getElementById('zip').value;
-      const date = `Today`;
+      let date = getDate();
       let entry;
       getData(baseURL, zipcode, apiKey)
       .then(function(data) {
@@ -32,6 +32,14 @@ function performAction(e) {
     } else {
       printValidationText();
     }
+}
+
+function getDate() {
+  let a = new Date();
+  let d = a.getUTCDate();
+  let m = a.toLocaleString('default', {month:'short'});
+  let date = `${d} ${m}`;
+  return date;
 }
 
 function printValidationText() {
