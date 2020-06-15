@@ -1,9 +1,8 @@
 // addAnimal == addEntry
 // getAnimal == getData
 
-const baseURL = 'http://api.openweathermap.org/data/2.5/weather?id='
-const cityID = '1880252';
-const apiKey = '&units=metric&appid=57a2177ab4043fe02d0ceb4845a9b1dc';
+const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip='
+const apiKey = ',us&units=metric&appid=57a2177ab4043fe02d0ceb4845a9b1dc';
 
 // Search via City code, for SG
 // http://api.openweathermap.org/data/2.5/weather?id=1880252&appid=57a2177ab4043fe02d0ceb4845a9b1dc
@@ -23,7 +22,7 @@ function performAction(e) {
       const zipcode = document.getElementById('zip').value;
       const date = `Today`;
       let entry;
-      getData(baseURL, cityID, apiKey)
+      getData(baseURL, zipcode, apiKey)
       .then(function(data) {
           postData('/addEntry', {date: date, emoji: emoji, feelings: feelings, zipcode: zipcode, weather: `${data.weather[0].description.charAt(0).toUpperCase()}${data.weather[0].description.slice(1)}, ${data.main.temp.toFixed(1)}°C`})
       .then(
@@ -87,9 +86,9 @@ const updateUI = async() => {
 }
 
 // Attempt to use API
-const getData = async (baseURL, cityID, apiKey) => {
+const getData = async (baseURL, zipcode, apiKey) => {
   // 1. This is the actual code to run if we want to simulate how actual server data is like
-  const res = await fetch(baseURL+cityID+apiKey)
+  const res = await fetch(baseURL+zipcode+apiKey)
   // 2. As we are not using a real API, we are simulating 
   // const res = await fetch('/fakedata')
   try {
